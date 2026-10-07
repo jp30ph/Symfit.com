@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Symfit - Actividad física, movimiento y bienestar.">
+    <meta name="theme-color" content="#6C5CE7">
+
+    <title>Symfit | Muévete, conecta y vive</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7fb;
+            color: #222;
+        }
+
+        /* =========================
+           BARRA DE NAVEGACIÓN
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+            color: #6C5CE7;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #6C5CE7;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 7%;
+
+            background:
+                radial-gradient(circle at 80% 20%, #d9d2ff 0%, transparent 30%),
+                radial-gradient(circle at 20% 80%, #c9fff0 0%, transparent 30%),
+                linear-gradient(135deg, #f1efff, #ffffff);
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 10px 17px;
+
+            border-radius: 30px;
+
+            background: #e8e4ff;
+            color: #5b4bd8;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #6C5CE7;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+
+            color: #555;
+
+            max-width: 650px;
+
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 15px 25px;
+
+            border-radius: 14px;
+
+            background: #6C5CE7;
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
+        }
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
+        .cards {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 32px;
+
+            border-radius: 25px;
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 48px;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           ACTIVIDADES
+        ========================= */
+
+        .activities {
+            background: #202124;
+
+            color: white;
+        }
+
+        .activities .section-title p {
+            color: #bbb;
+        }
+
+        .activity-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .activity {
+            background: #2c2d31;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .activity:hover {
+            transform: scale(1.04);
+        }
+
+        .activity .emoji {
+            font-size: 45px;
+
+            margin-bottom: 12px;
+        }
+
+        .activity h3 {
+            margin-bottom: 8px;
+        }
+
+        .activity p {
+            color: #bbb;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           PASOS
+        ========================= */
+
+        .steps {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .step {
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        .number {
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #6C5CE7;
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #666;
+        }
+
+        /* =========================
+           ESTADÍSTICAS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+            padding: 60px 7%;
+
+            background: linear-gradient(135deg, #6C5CE7, #00B894);
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+
+            font-size: 45px;
+
+            margin-bottom: 5px;
+        }
+
+        .stat span {
+            font-size: 16px;
+        }
+
+        /* =========================
+           LLAMADO A LA ACCIÓN
+        ========================= */
+
+        .cta {
+            margin: 70px 7%;
+
+            padding: 65px 25px;
+
+            text-align: center;
+
+            color: white;
+
+            border-radius: 30px;
+
+            background: linear-gradient(135deg, #6C5CE7, #00B894);
+        }
+
+        .cta h2 {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #5b4bd8;
+        }
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
+
+        footer {
+            background: #151515;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MÓVILES
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 60px 5%;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .cta {
+                margin: 40px 5%;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav a {
+                font-size: 12px;
+                margin-left: 6px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            SYMFIT
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#actividades">Actividades</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         INICIO
+    ========================= -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div class="tag">
+                    🏃 Actividad física · Salud · Bienestar
+                </div>
+
+                <h1>
+                    Muévete.<br>
+                    <span>Conecta.</span><br>
+                    Vive.
+                </h1>
+
+                <p>
+                    Symfit es una propuesta enfocada en promover
+                    la actividad física de una manera creativa,
+                    divertida y adaptada a las personas.
+                </p>
+
+                <a href="#beneficios" class="btn">
+                    🚀 Comenzar
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BENEFICIOS
+        ========================= -->
+
+        <section id="beneficios">
+
+            <div class="section-title">
+
+                <h2>
+                    ¿Qué es Symfit?
+                </h2>
+
+                <p>
+                    Una forma diferente de vivir la actividad física.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <article class="card">
+
+                    <div class="icon">
+                        🏋️
+                    </div>
+
+                    <h3>
+                        Actividad física
+                    </h3>
+
+                    <p>
+                        Encuentra diferentes formas de mantenerte
+                        activo y convierte el movimiento en parte
+                        de tu rutina.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Metas personales
+                    </h3>
+
+                    <p>
+                        Establece objetivos y trabaja poco a poco
+                        para alcanzar nuevas metas.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">
+                        😊
+                    </div>
+
+                    <h3>
+                        Bienestar
+                    </h3>
+
+                    <p>
+                        Promueve hábitos positivos que contribuyan
+                        a una vida más activa y saludable.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACTIVIDADES
+        ========================= -->
+
+        <section class="activities" id="actividades">
+
+            <div class="section-title">
+
+                <h2>
+                    Actividades
+                </h2>
+
+                <p>
+                    Encuentra una actividad que disfrutes.
+                </p>
+
+            </div>
+
+
+            <div class="activity-grid">
+
+                <div class="activity">
+
+                    <div class="emoji">
+                        🏃
+                    </div>
+
+                    <h3>
+                        Correr
+                    </h3>
+
+                    <p>
+                        Mejora tu resistencia y mantente activo.
+                    </p>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="emoji">
+                        🚴
+                    </div>
+
+                    <h3>
+                        Ciclismo
+                    </h3>
+
+                    <p>
+                        Disfruta del movimiento mientras recorres nuevos lugares.
+                    </p>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="emoji">
+                        🏀
+                    </div>
+
+                    <h3>
+                        Deportes
+                    </h3>
+
+                    <p>
+                        Comparte y disfruta la actividad física.
+                    </p>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="emoji">
+                        🧘
+                    </div>
+
+                    <h3>
+                        Relajación
+                    </h3>
+
+                    <p>
+                        Combina movimiento, descanso y bienestar.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CÓMO FUNCIONA
+        ========================= -->
+
+        <section>
+
+            <div class="section-title">
+
+                <h2>
+                    ¿Cómo empezar?
+                </h2>
+
+                <p>
+                    Tres pasos para comenzar tu camino.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="number">
+                        1
+                    </div>
+
+                    <h3>
+                        Elige
+                    </h3>
+
+                    <p>
+                        Selecciona una actividad que te guste.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="number">
+                        2
+                    </div>
+
+                    <h3>
+                        Muévete
+                    </h3>
+
+                    <p>
+                        Dedica tiempo a mantenerte activo.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="number">
+                        3
+                    </div>
+
+                    <h3>
+                        Progresa
+                    </h3>
+
+                    <p>
+                        Continúa avanzando y alcanza tus objetivos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ESTADÍSTICAS
+        ========================= -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <strong>
+                    01
+                </strong>
+
+                <span>
+                    Muévete a tu ritmo
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    02
+                </strong>
+
+                <span>
+                    Supera tus metas
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    03
+                </strong>
+
+                <span>
+                    Disfruta el proceso
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACTO
+        ========================= -->
+
+        <div class="cta" id="contacto">
+
+            <h2>
+                ¿Listo para empezar?
+            </h2>
+
+            <p>
+                Haz de la actividad física parte de tu día.
+            </p>
+
+            <a
+                class="btn"
+                href="mailto:contacto@symfit.com"
+            >
+                📩 Contactar
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            ©️ 2026 <strong>Symfit</strong>
+            · Actividad física y bienestar
+        </p>
+
+    </footer>
+
+</body>
+</html>
