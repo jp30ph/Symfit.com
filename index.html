@@ -1,141 +1,562 @@
-<!ddd;
-    border-radius: 12px;
-    font-size: 16px;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FitLife | Vive en Movimiento</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.calculate {
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    font-size: 17px;
+html{
+    scroll-behavior:smooth;
 }
 
-.result {
-    display: none;
-    margin-top: 30px;
-    padding: 25px;
-    border-radius: 20px;
-    background: #f0edff;
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f8f6;
+    color:#26332e;
 }
 
-.result h3 {
-    color: #5b4bd8;
-    margin-bottom: 15px;
+/* ---------- BARRA DE NAVEGACIÓN ---------- */
+
+nav{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:10;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 7%;
 }
 
-.result-item {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 12px;
+.logo{
+    color:white;
+    font-family:'Dancing Script',cursive;
+    font-size:35px;
+    font-weight:700;
 }
 
-.result-item strong {
-    color: #6c5ce7;
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
 }
 
-/* TARJETAS */
-
-.cards {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    transition:.3s;
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 22px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+nav a:hover{
+    color:#b7f34b;
 }
 
-.card .icon {
-    font-size: 45px;
-    margin-bottom: 15px;
+/* ---------- PORTADA ---------- */
+
+.hero{
+    min-height:650px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+    linear-gradient(90deg,rgba(5,22,17,.92),rgba(5,22,17,.48),rgba(5,22,17,.15)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+.hero-content{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+    color:white;
+    padding-top:50px;
 }
 
-.card p {
-    color: #666;
-    line-height: 1.6;
+.small-title{
+    color:#b7f34b;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 
-/* CONSEJOS */
-
-.tips {
-    background: #202124;
-    color: white;
+.hero h1{
+    max-width:720px;
+    font-size:clamp(45px,7vw,82px);
+    line-height:1;
+    margin:12px 0;
+    font-weight:800;
 }
 
-.tips .title p {
-    color: #bbb;
+.hero h1 span{
+    color:#b7f34b;
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
 }
 
-.tip-list {
-    max-width: 800px;
-    margin: auto;
+.hero p{
+    max-width:590px;
+    color:#e9eee9;
+    font-size:17px;
+    line-height:1.8;
 }
 
-.tip {
-    background: #2c2d31;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 15px;
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:28px;
+    flex-wrap:wrap;
 }
 
-.tip strong {
-    color: #8f82ff;
+.btn{
+    text-decoration:none;
+    padding:13px 25px;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
 }
 
-/* AVISO */
-
-.notice {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff8df;
-    border-radius: 15px;
-    color: #665500;
-    line-height: 1.6;
+.btn-primary{
+    background:#b7f34b;
+    color:#172218;
 }
 
-/* FOOTER */
-
-footer {
-    background: #151515;
-    color: #aaa;
-    text-align: center;
-    padding: 30px;
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(183,243,75,.3);
 }
 
-/* CELULAR */
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.6);
+    color:white;
+}
 
-@media(max-width: 750px) {
+.btn-secondary:hover{
+    background:white;
+    color:#172218;
+}
 
-    header {
-        padding: 15px 5%;
+/* ---------- FRASE ---------- */
+
+.quote{
+    width:90%;
+    max-width:1050px;
+    margin:-45px auto 0;
+    position:relative;
+    background:white;
+    border-radius:22px;
+    padding:28px 35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.10);
+    text-align:center;
+}
+
+.quote p{
+    font-family:'Dancing Script',cursive;
+    font-size:30px;
+    color:#365343;
+}
+
+.quote span{
+    color:#87b92c;
+}
+
+/* ---------- SECCIÓN CENTRAL ---------- */
+
+.section{
+    width:90%;
+    max-width:1150px;
+    margin:75px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title small{
+    color:#81ae2a;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-weight:600;
+}
+
+.section-title h2{
+    font-size:40px;
+    color:#20342b;
+    margin-top:5px;
+}
+
+.section-title h2 span{
+    font-family:'Dancing Script',cursive;
+    color:#81ae2a;
+}
+
+/* ---------- IMPORTANCIA ---------- */
+
+.importance{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.importance-image{
+    height:430px;
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+}
+
+.importance-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.importance-image:hover img{
+    transform:scale(1.05);
+}
+
+.importance-text h3{
+    font-family:'Dancing Script',cursive;
+    font-size:38px;
+    color:#5c8730;
+    margin-bottom:12px;
+}
+
+.importance-text p{
+    line-height:1.8;
+    color:#56645d;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+.check{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:10px 0;
+    font-weight:500;
+}
+
+.check b{
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:#dff6a8;
+    color:#527c20;
+    display:grid;
+    place-items:center;
+}
+
+/* ---------- BENEFICIOS ---------- */
+
+.benefits{
+    background:#eaf4e2;
+    padding:65px 5%;
+    margin-top:70px;
+}
+
+.cards{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    background:white;
+    padding:27px 20px;
+    border-radius:22px;
+    text-align:center;
+    transition:.3s;
+    border:1px solid #edf1ea;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 30px rgba(39,72,51,.12);
+}
+
+.card-icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    color:#294236;
+    margin-bottom:7px;
+    font-size:18px;
+}
+
+.card p{
+    color:#748078;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* ---------- EJERCICIOS ---------- */
+
+.exercise-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.exercise{
+    height:330px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    color:white;
+}
+
+.exercise img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.exercise:hover img{
+    transform:scale(1.08);
+}
+
+.exercise::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 35%,rgba(0,0,0,.85));
+}
+
+.exercise-info{
+    position:absolute;
+    z-index:2;
+    bottom:20px;
+    left:22px;
+}
+
+.exercise-info h3{
+    font-size:24px;
+}
+
+.exercise-info p{
+    font-size:13px;
+    color:#e1e9e2;
+}
+
+/* ---------- ESTADÍSTICAS ---------- */
+
+.stats{
+    background:#172c22;
+    color:white;
+    border-radius:30px;
+    padding:45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    text-align:center;
+}
+
+.stat h3{
+    font-size:38px;
+    color:#b7f34b;
+}
+
+.stat p{
+    color:#c4cec8;
+    font-size:14px;
+}
+
+/* ---------- MENSAJE MOTIVACIONAL ---------- */
+
+.motivation{
+    margin-top:75px;
+    min-height:350px;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px;
+    color:white;
+    background:
+    linear-gradient(rgba(15,38,28,.78),rgba(15,38,28,.78)),
+    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=90")
+    center/cover;
+}
+
+.motivation h2{
+    font-size:45px;
+    max-width:800px;
+}
+
+.motivation h2 span{
+    color:#b7f34b;
+    font-family:'Dancing Script',cursive;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    margin-top:70px;
+    background:#102119;
+    color:white;
+    padding:45px 7% 25px;
+}
+
+.footer-content{
+    max-width:1150px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    font-family:'Dancing Script',cursive;
+    color:#b7f34b;
+    font-size:38px;
+}
+
+.footer-text{
+    max-width:450px;
+    color:#aebbb3;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a{
+    color:#dce5df;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-bottom{
+    max-width:1150px;
+    margin:30px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    color:#829188;
+    font-size:12px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:900px){
+
+    nav{
+        padding:18px 5%;
     }
 
-    nav a {
-        font-size: 12px;
-        margin-left: 8px;
+    nav ul{
+        gap:12px;
     }
 
-    section {
-        padding: 55px 5%;
+    nav a{
+        font-size:11px;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
+    .hero{
+        min-height:620px;
     }
 
-    .calculator {
-        padding: 25px;
+    .importance{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .exercise-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:28px;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero-content{
+        padding-top:80px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .quote{
+        padding:22px 18px;
+    }
+
+    .quote p{
+        font-size:25px;
+    }
+
+    .section{
+        margin:55px auto;
+    }
+
+    .section-title h2{
+        font-size:31px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .importance-image{
+        height:320px;
+    }
+
+    .motivation h2{
+        font-size:34px;
+    }
+
+    .stats{
+        padding:35px 20px;
     }
 }
 </style>
@@ -143,166 +564,112 @@ footer {
 
 <body>
 
-<header>
+<!-- NAVEGACIÓN -->
+<nav>
+    <div class="logo">FitLife ✦</div>
 
-    <div class="logo">
-        SYMFIT
-    </div>
-
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#calcular">Mi plan</a>
-        <a href="#consejos">Consejos</a>
-    </nav>
-
-</header>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#importancia">Importancia</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#ejercicios">Ejercicios</a></li>
+    </ul>
+</nav>
 
 
-<!-- INICIO -->
-
+<!-- PORTADA -->
 <section class="hero" id="inicio">
 
     <div class="hero-content">
 
+        <div class="small-title">Tu mejor versión comienza hoy</div>
+
         <h1>
-            Muévete.<br>
-            <span>Conecta.</span><br>
-            Vive.
+            Mueve tu cuerpo,
+            <span>transforma tu vida.</span>
         </h1>
 
         <p>
-            Symfit te ayuda a organizar tu actividad física
-            y conocer datos orientativos sobre ejercicio,
-            peso e hidratación.
+            El ejercicio físico no solamente cambia nuestro cuerpo.
+            También fortalece nuestra mente, mejora nuestro estado de ánimo
+            y nos ayuda a vivir una vida más saludable y feliz.
         </p>
 
-        <a href="#calcular" class="btn">
-            Crear mi plan
-        </a>
+        <div class="hero-buttons">
+            <a href="#importancia" class="btn btn-primary">
+                Descubre sus beneficios
+            </a>
+
+            <a href="#ejercicios" class="btn btn-secondary">
+                Ver ejercicios
+            </a>
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- CALCULADORA -->
+<!-- FRASE -->
+<div class="quote">
+    <p>
+        “No tienes que ser perfecto,
+        solo tienes que <span>comenzar.</span>”
+    </p>
+</div>
 
-<section id="calcular">
 
-    <div class="title">
+<!-- IMPORTANCIA -->
+<section class="section" id="importancia">
 
-        <h2>
-            🏃 Mi información
-        </h2>
-
-        <p>
-            Completa tus datos para obtener una orientación.
-        </p>
-
+    <div class="section-title">
+        <small>Cuida de ti</small>
+        <h2>¿Por qué es tan <span>importante?</span></h2>
     </div>
 
+    <div class="importance">
 
-    <div class="calculator">
-
-        <div class="input-group">
-
-            <label for="edad">
-                Edad
-            </label>
-
-            <input
-                type="number"
-                id="edad"
-                placeholder="Ejemplo: 15"
-                min="5"
-                max="100"
-            >
-
+        <div class="importance-image">
+            <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=90"
+            alt="Persona haciendo ejercicio">
         </div>
 
+        <div class="importance-text">
 
-        <div class="input-group">
+            <h3>El ejercicio es salud</h3>
 
-            <label for="peso">
-                Peso (kg)
-            </label>
+            <p>
+                Realizar actividad física regularmente ayuda a mantener
+                nuestro cuerpo fuerte y saludable. No importa si hacemos
+                ejercicio en un gimnasio, en casa, en un parque o practicando
+                algún deporte.
+            </p>
 
-            <input
-                type="number"
-                id="peso"
-                placeholder="Ejemplo: 60"
-                min="20"
-                max="300"
-            >
+            <p>
+                Además, movernos diariamente puede ayudarnos a reducir
+                el estrés, dormir mejor, aumentar nuestra energía y sentirnos
+                más seguros de nosotros mismos.
+            </p>
 
-        </div>
-
-
-        <div class="input-group">
-
-            <label for="ejercicio">
-                ¿Cuánto tiempo quieres hacer ejercicio?
-            </label>
-
-            <select id="ejercicio">
-
-                <option value="20">
-                    20 minutos
-                </option>
-
-                <option value="30">
-                    30 minutos
-                </option>
-
-                <option value="45">
-                    45 minutos
-                </option>
-
-                <option value="60">
-                    60 minutos
-                </option>
-
-                <option value="90">
-                    90 minutos
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <button
-            class="btn calculate"
-            onclick="calcularPlan()"
-        >
-            📊 Calcular mi orientación
-        </button>
-
-
-        <div class="result" id="resultado">
-
-            <h3>
-                🎯 Tu orientación Symfit
-            </h3>
-
-            <div class="result-item">
-                <strong>Ejercicio:</strong>
-                <span id="resultadoEjercicio"></span>
+            <div class="check">
+                <b>✓</b>
+                Mejora la salud física
             </div>
 
-            <div class="result-item">
-                <strong>Peso registrado:</strong>
-                <span id="resultadoPeso"></span>
+            <div class="check">
+                <b>✓</b>
+                Fortalece músculos y huesos
             </div>
 
-            <div class="result-item">
-                <strong>Agua orientativa:</strong>
-                <span id="resultadoAgua"></span>
+            <div class="check">
+                <b>✓</b>
+                Ayuda a reducir el estrés
             </div>
 
-            <div class="result-item">
-                <strong>Consejo:</strong>
-                <span id="resultadoConsejo"></span>
+            <div class="check">
+                <b>✓</b>
+                Mejora el estado de ánimo
             </div>
 
         </div>
@@ -313,75 +680,49 @@ footer {
 
 
 <!-- BENEFICIOS -->
+<section class="benefits" id="beneficios">
 
-<section>
-
-    <div class="title">
-
-        <h2>
-            💪 ¿Qué puedes controlar?
-        </h2>
-
-        <p>
-            Lleva un mejor control de tus hábitos.
-        </p>
-
+    <div class="section-title">
+        <small>Una vida más saludable</small>
+        <h2>Beneficios del <span>ejercicio</span></h2>
     </div>
-
 
     <div class="cards">
 
         <div class="card">
-
-            <div class="icon">
-                ⏱️
-            </div>
-
-            <h3>
-                Tiempo de ejercicio
-            </h3>
-
+            <div class="card-icon">❤️</div>
+            <h3>Corazón fuerte</h3>
             <p>
-                Elige cuánto tiempo quieres dedicar
-                a tu actividad física.
+                La actividad física ayuda a mantener
+                un corazón saludable.
             </p>
-
         </div>
 
-
         <div class="card">
-
-            <div class="icon">
-                ⚖️
-            </div>
-
-            <h3>
-                Peso
-            </h3>
-
+            <div class="card-icon">🧠</div>
+            <h3>Mente saludable</h3>
             <p>
-                Registra tu peso para llevar un control
-                personal de tus datos.
+                Puede mejorar el ánimo, la concentración
+                y disminuir el estrés.
             </p>
-
         </div>
 
+        <div class="card">
+            <div class="card-icon">💪</div>
+            <h3>Más fuerza</h3>
+            <p>
+                Ayuda a fortalecer músculos y mejorar
+                nuestra resistencia.
+            </p>
+        </div>
 
         <div class="card">
-
-            <div class="icon">
-                💧
-            </div>
-
-            <h3>
-                Hidratación
-            </h3>
-
+            <div class="card-icon">😴</div>
+            <h3>Mejor descanso</h3>
             <p>
-                Obtén una orientación general sobre
-                tu consumo diario de agua.
+                Mantenerse activo puede favorecer
+                una mejor calidad del sueño.
             </p>
-
         </div>
 
     </div>
@@ -389,169 +730,123 @@ footer {
 </section>
 
 
-<!-- CONSEJOS -->
+<!-- EJERCICIOS -->
+<section class="section" id="ejercicios">
 
-<section class="tips" id="consejos">
+    <div class="section-title">
+        <small>Actívate</small>
+        <h2>Encuentra tu forma de <span>moverte</span></h2>
+    </div>
 
-    <div class="title">
+    <div class="exercise-grid">
+
+        <div class="exercise">
+            <img
+            src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=90"
+            alt="Entrenamiento con pesas">
+
+            <div class="exercise-info">
+                <h3>Fuerza 💪</h3>
+                <p>Entrena y fortalece tus músculos.</p>
+            </div>
+        </div>
+
+        <div class="exercise">
+            <img
+            src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=90"
+            alt="Persona corriendo">
+
+            <div class="exercise-info">
+                <h3>Cardio 🏃</h3>
+                <p>Mejora tu resistencia y energía.</p>
+            </div>
+        </div>
+
+        <div class="exercise">
+            <img
+            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=90"
+            alt="Persona haciendo yoga">
+
+            <div class="exercise-info">
+                <h3>Flexibilidad 🧘</h3>
+                <p>Relaja tu cuerpo y mejora tu movilidad.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ESTADÍSTICAS -->
+<section class="section">
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>30+</h3>
+            <p>minutos de actividad recomendados para comenzar</p>
+        </div>
+
+        <div class="stat">
+            <h3>💧</h3>
+            <p>Mantente hidratado antes, durante y después del ejercicio</p>
+        </div>
+
+        <div class="stat">
+            <h3>7h+</h3>
+            <p>de descanso ayudan a recuperar cuerpo y mente</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FRASE FINAL -->
+<section class="section">
+
+    <div class="motivation">
 
         <h2>
-            💡 Consejos Symfit
+            Cada entrenamiento es un paso hacia
+            una versión más fuerte de <span>ti mismo.</span> 💚
         </h2>
-
-        <p>
-            Pequeños hábitos pueden ayudarte a mantenerte activo.
-        </p>
-
-    </div>
-
-
-    <div class="tip-list">
-
-        <div class="tip">
-            <strong>🏃 Movimiento:</strong>
-            Mantente activo de acuerdo con tu edad,
-            condición física y posibilidades.
-        </div>
-
-        <div class="tip">
-            <strong>💧 Hidratación:</strong>
-            Toma agua durante el día y aumenta la atención
-            a la hidratación cuando hace calor o realizas
-            actividad física.
-        </div>
-
-        <div class="tip">
-            <strong>😴 Descanso:</strong>
-            El descanso también forma parte de un estilo
-            de vida saludable.
-        </div>
-
-        <div class="tip">
-            <strong>🥗 Alimentación:</strong>
-            Una alimentación variada y equilibrada
-            complementa la actividad física.
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- AVISO -->
-
-<div class="notice">
-
-    ⚠️ <strong>Importante:</strong>
-    Los resultados de Symfit son orientativos y no sustituyen
-    la valoración de un profesional de la salud. Las necesidades
-    de ejercicio, agua y alimentación pueden variar según la edad,
-    actividad, clima y características personales.
-
-</div>
-
-
+<!-- FOOTER -->
 <footer>
 
-    ©️ 2026 <strong>Symfit</strong>
-    · Actividad física y bienestar
+    <div class="footer-content">
+
+        <div>
+            <div class="footer-logo">FitLife ✦</div>
+
+            <p class="footer-text">
+                Cuidar nuestro cuerpo es una forma de agradecerle
+                todo lo que hace por nosotros. Muévete, disfruta
+                y construye hábitos saludables.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#importancia">Salud</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#ejercicios">Ejercicios</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        ©️ 2026 FitLife · Vive saludable · Vive en movimiento 💚
+    </div>
 
 </footer>
 
-
-<script>
-
-function calcularPlan() {
-
-    const edad =
-        Number(document.getElementById("edad").value);
-
-    const peso =
-        Number(document.getElementById("peso").value);
-
-    const ejercicio =
-        Number(document.getElementById("ejercicio").value);
-
-
-    if (!edad || !peso) {
-
-        alert("Por favor, escribe tu edad y tu peso.");
-
-        return;
-    }
-
-
-    /*
-       Para adultos se utiliza aquí una estimación general
-       de 30-35 ml de agua por kg de peso.
-
-       En menores de edad NO se presenta como una cantidad
-       personalizada; se recomienda consultar a un adulto
-       responsable o profesional.
-    */
-
-    let agua;
-
-
-    if (edad < 18) {
-
-        agua =
-            "Consulta con un adulto responsable o profesional de salud para establecer una cantidad adecuada.";
-
-    } else {
-
-        const aguaMin =
-            Math.round(peso * 30);
-
-        const aguaMax =
-            Math.round(peso * 35);
-
-        agua =
-            aguaMin + "–" + aguaMax +
-            " ml/día aproximadamente, como referencia general.";
-
-    }
-
-
-    let consejo;
-
-
-    if (ejercicio <= 30) {
-
-        consejo =
-            "Empieza de forma gradual y escucha las señales de tu cuerpo.";
-
-    } else if (ejercicio <= 60) {
-
-        consejo =
-            "Recuerda hidratarte y realizar el ejercicio a una intensidad adecuada para ti.";
-
-    } else {
-
-        consejo =
-            "Para sesiones largas, presta especial atención a la hidratación, descansos e intensidad.";
-
-    }
-
-
-    document.getElementById("resultadoEjercicio").textContent =
-        ejercicio + " minutos";
-
-    document.getElementById("resultadoPeso").textContent =
-        peso + " kg";
-
-    document.getElementById("resultadoAgua").textContent =
-        agua;
-
-    document.getElementById("resultadoConsejo").textContent =
-        consejo;
-
-
-    document.getElementById("resultado").style.display =
-        "block";
-
-}
-
-</script>
-
-</bo
+</body>
+</html>
